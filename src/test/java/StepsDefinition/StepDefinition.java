@@ -15,7 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 
 
-public class LoginDemoSteps {
+public class StepDefinition {
 	   private WebDriver driver;
 
 	    @Given("^I am on the Facebook login page$")
