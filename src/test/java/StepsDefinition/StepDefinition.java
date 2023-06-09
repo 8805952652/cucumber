@@ -68,7 +68,7 @@ public class StepDefinition {
 	    @After
 	    public void closeBrowser() {
 	        // Close the WebDriver instance after each scenario
-	        driver.quit();
+	        
 	    }
 	}
 
