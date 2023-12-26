@@ -1,6 +1,5 @@
 package com.chitale.factory;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -19,11 +18,9 @@ public class DriverFactory {
     public WebDriver initDriver(String browser) {
         switch (browser) {
             case "chrome":
-                WebDriverManager.chromedriver().setup();
                 tlDriver.set(new ChromeDriver());
                 break;
             case "firefox":
-                WebDriverManager.firefoxdriver().setup();
                 tlDriver.set(new FirefoxDriver());
                 break;
             case "safari":
