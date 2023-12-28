@@ -37,7 +37,7 @@ public class LoginPageSteps {
     public void user_enters_password(String password) {
         loginPage.enterPassword(password);
     }
-
+//
     @When("User clicks on Login button")
     public void user_clicks_on_login_button() {
         loginPage.clickOnLogin();
