@@ -2,6 +2,7 @@ package com.chitale.stepdefinitions;
 
 import com.chitale.factory.DriverFactory;
 import com.chitale.pageobjects.LoginPage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,7 +15,12 @@ public class LoginPageSteps {
 
     @Given("User is on login page")
     public void user_is_on_login_page() {
-        DriverFactory.getDriver().get("https://www.saucedemo.com/");
+        DriverFactory.getDriver().get("https://erpqa.chitalegroup.co.in/");
+    }
+
+    @Then("User clicks on login button")
+    public void user_clicks_on_login_button() {
+        loginPage.clickOnLogin1();
     }
 
     @When("User gets the title of the page")
@@ -38,8 +44,10 @@ public class LoginPageSteps {
         loginPage.enterPassword(password);
     }
 //
-    @When("User clicks on Login button")
-    public void user_clicks_on_login_button() {
-        loginPage.clickOnLogin();
+    @Then("User clicks on logon button")
+    public void user_clicks_on_logon_button() {
+        loginPage.clickOnLogonButton();
+
     }
-}
+
+    }
