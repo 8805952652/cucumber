@@ -1,20 +1,24 @@
 package com.chitale.pageobjects;
 
-import com.chitale.utils.ConfigReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import java.util.Properties;
 
 public class LoginPage {
 
     private WebDriver driver;
-    private ConfigReader config = new ConfigReader();;
-    private Properties prop = config.initProps();
-    private final By signInButton1  = By.xpath("//button[normalize-space()='Log In']");
+
+    private final By signInButton = By.xpath("//button[normalize-space()='Log In']");
+    private final By btnLogin = By.xpath("//input[@type='submit']");
+
+
     private final By emailId = By.xpath("//input[@id='j_username']");
     private final By password = By.xpath("//input[@id='j_password']");
-    private final By logonButton= By.xpath("//input[@id='loginButton']");
+    private final By logonButton = By.xpath("//input[@id='loginButton']");
+
+    private final By btnAdmin = By.xpath("//span[normalize-space()='Admin']");
+
+    private final By btnDesignation = By.xpath("//span[contains(text(),'Designation')]");
+
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -24,28 +28,37 @@ public class LoginPage {
         return driver.getTitle();
     }
 
-    public void clickOnLogin1() {
-        driver.findElement(signInButton1).click();
-    }
+//    public void clickOnLoginButtonHomePage() {
+//        driver.findElement().click();
+//    }
+
+   // public String getHomePage() { return driver.getHome(); }
 
     public void enterUserName(String username) {
-        driver.findElement(emailId).sendKeys("supervisor");
+        driver.findElement(emailId).sendKeys(username);
     }
 
     public void enterPassword(String pwd) {
-        driver.findElement(password).sendKeys("Sangli1");
+        driver.findElement(password).sendKeys(pwd);
     }
 
-    public void clickOnLogonButton() {
-        driver.findElement(logonButton).click();
+    public void clickOnLoginButton() {
+        driver.findElement(btnLogin).click();
     }
 
+    public void clickOnAdminButton() { driver.findElement(btnAdmin).click(); }
+
+    public void clickOnDesignationButton() { driver.findElement(btnDesignation).click(); }
 
 
-    public void loginToApplication() {
-        driver.findElement(signInButton1).click();
-        driver.findElement(emailId).sendKeys(prop.getProperty("UserName"));
-        driver.findElement(password).sendKeys(prop.getProperty("Password"));
+    public void loginToApplication(String userName, String pwd) {
+        System.out.println("login with: " + userName + " and " + pwd);
+        driver.findElement(signInButton).click();
+
+        driver.findElement(emailId).sendKeys(userName);
+        driver.findElement(password).sendKeys(pwd);
         driver.findElement(logonButton).click();
+
+
     }
 }

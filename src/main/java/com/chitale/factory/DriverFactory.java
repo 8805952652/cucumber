@@ -12,14 +12,9 @@ public class DriverFactory {
     /**
      * This method is used to initialize the threadLocal driver on the basis of given
      * browser
-     * @param_browser
+     * @param browser
      * @return this will return tldriver.
      */
-
-    public static synchronized WebDriver getDriver() {
-        return tlDriver.get();
-    }
-
     public WebDriver initDriver(String browser) {
         switch (browser) {
             case "chrome":
@@ -43,7 +38,9 @@ public class DriverFactory {
     /**
      * This is used to get the driver with ThreadLocal
      */
-
+    public static synchronized WebDriver getDriver() {
+        return tlDriver.get();
+    }
 
     public void closeBrowser() {
         getDriver().close();
