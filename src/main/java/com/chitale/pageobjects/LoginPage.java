@@ -1,12 +1,17 @@
 package com.chitale.pageobjects;
 
+import com.chitale.utils.ConfigReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Properties;
 
 public class LoginPage {
 
     private WebDriver driver;
-    private final By signInButton1  = By.xpath("//button[@type='button']");
+    private ConfigReader config = new ConfigReader();;
+    private Properties prop = config.initProps();
+    private final By signInButton1  = By.xpath("//button[normalize-space()='Log In']");
     private final By emailId = By.xpath("//input[@id='j_username']");
     private final By password = By.xpath("//input[@id='j_password']");
     private final By logonButton= By.xpath("//input[@id='loginButton']");
@@ -35,11 +40,12 @@ public class LoginPage {
         driver.findElement(logonButton).click();
     }
 
-    public void loginToApplication(String userName, String pwd) {
-        System.out.println("login with: " + userName + " and " + pwd);
+
+
+    public void loginToApplication() {
         driver.findElement(signInButton1).click();
-        driver.findElement(emailId).sendKeys(userName);
-        driver.findElement(password).sendKeys(pwd);
+        driver.findElement(emailId).sendKeys(prop.getProperty("UserName"));
+        driver.findElement(password).sendKeys(prop.getProperty("Password"));
         driver.findElement(logonButton).click();
     }
 }
